@@ -1,0 +1,19 @@
+# Description: Some tools which enable multi-platform development on the TI Tiva/Stellaris boards
+# URL: https://github.com/utzig/lm4tools
+
+name=lm4tools
+version=dbd6d7f
+release=1
+source=(https://github.com/utzig/lm4tools/archive/$version.zip)
+
+build() {
+   cd $name-$version*
+   make -C lm4flash
+
+   cp lm4flash/lm4flash $OUTPUT
+}
+
+check ()
+{
+   check_exist /usr/include/libusb-1.0/libusb.h "Found in Ubuntu package libusb-1.0-0-dev"
+}

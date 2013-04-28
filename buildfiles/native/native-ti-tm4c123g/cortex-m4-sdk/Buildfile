@@ -1,0 +1,21 @@
+# Description: SDK for Cortex M4
+# URL:
+
+name=cortex-m4-sdk
+version=1
+release=1
+depends=(native/crosstool-ng tivaware)
+
+build() {
+   mkdir $PKG/$name
+
+   # Copy full sysroot
+   cp -a $SYSROOT/* $PKG/$name
+
+   # Cleanup
+   cd $PKG/$name/$HOST/sysroot/usr/; rm -rf !(docs|include|lib)
+   cd $PKG/$name/$HOST/sysroot/; rm -rf !(lib|usr)
+
+   # Create tarball
+   tar -C $PKG -acpf $OUTPUT/$name.tar.gz .
+}

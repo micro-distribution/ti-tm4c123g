@@ -1,0 +1,47 @@
+Name:
+
+   TM4C123G Micro Distribution
+
+About:
+
+   A small distribution for the TI Tiva TM4C123G Launchpad device
+
+Main features:
+
+   * GCC Cortex-M4 toolchain
+   * Hard floating point
+
+Main builds:
+
+   tivaware         - TI Tivaware demos
+   cortex-m4-sdk    - SDK with toolchain and TivaWare libs
+   native/lm4flash  - Small utility to flash the device through ICDI
+
+Build system requirements:
+
+   We are not allowed to redistribute the TI TivaWare libraries. You must
+   download the package yourself from http://www.ti.com/tool/sw-tm4c
+
+   Place the SW-TM4C-xxx.exe file in buildfiles/cross/cross-ti-tm4c123g/tivaware
+
+   Tested on Ubuntu 12.04 x86_64 with the following additional
+   packages installed:
+
+   $ sudo apt-get install unzip groff bison flex gperf texinfo xsltproc \
+                          libtool libncurses5-dev gawk libexpat1-dev \
+                          gettext libglib2.0-dev intltool libusb-1.0-0-dev \
+                          libxml2-utils docbook-xml cmake g++
+
+   Also requires reconfiguring "/bin/sh" to use bash:
+
+   $ sudo dpkg-reconfigure dash
+
+   Fact: Many software distributions fail to build using the dash shell.
+
+Known issues:
+
+   None
+
+Maintainer:
+
+   Martin Lund - martin.lund@keep-it-simple.com

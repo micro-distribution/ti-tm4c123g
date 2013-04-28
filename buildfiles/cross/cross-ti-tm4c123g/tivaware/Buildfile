@@ -1,0 +1,30 @@
+# Description: TI TivaWare
+# URL: http://www.ti.com/tool/sw-tm4c
+
+name=tivaware
+version=1.0
+release=1
+source=(SW-TM4C-$version.exe)
+
+build() {
+   unzip -q SW-TM4C-$version.exe
+
+   # Enable hard float
+   sed -i "s/-mfloat-abi=softfp/-mfloat-abi=hard/g" makedefs
+   make PREFIX=$HOST
+
+   mkdir -p $OUTPUT/demos
+
+   # Install demo binaries
+   find examples/boards/ek-tm4c123gxl -type f -name *.bin -print0 | \
+                              xargs -0 -I file cp file $OUTPUT/demos
+
+   # Install libraries
+   mkdir -p $PKG/lib
+   find . -type f -name *.a -print0 | xargs -0 -I file cp file $PKG/lib
+
+   # Install headers
+   find !(boards|boot_loader|tools) -type f -name *.h -print0 | \
+      xargs -0 -I file install -Dm644 file $PKG/include/file
+
+}

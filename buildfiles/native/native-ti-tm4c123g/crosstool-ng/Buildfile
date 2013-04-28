@@ -1,0 +1,46 @@
+# Description: A cross toolchain builder
+# URL: http://www.crosstool-ng.org
+
+name=crosstool-ng
+version=1.18.0
+release=1
+source=(http://crosstool-ng.org/download/$name/$name-$version.tar.bz2
+        disable-LD_LIBRARY_PATH-check.patch
+        $HOST.config)
+
+build()
+{
+   cd $name-$version
+
+   patch -p1 -i $SRC/disable-LD_LIBRARY_PATH-check.patch
+
+   ./configure --enable-local
+   make
+
+   # Do ct-ng configuration
+   cp $SRC/$HOST.config .config
+   sed -i /^CT_LOCAL_TARBALLS_DIR=/s:=.*:=\"$SOURCE\": .config
+   sed -i /^CT_PREFIX_DIR=/s:=.*:=\"$PKG\": .config
+
+   ./ct-ng build
+
+   # Fix .la files
+   sed -i -e "/libdir/s:=.*:='$CROSS_SYSROOT/lib':" \
+       $PKG/$HOST/sysroot/lib/libstdc++.la \
+       $PKG/$HOST/sysroot/lib/libsupc++.la
+}
+
+check()
+{
+   # Test for preinstalled tools and libs
+   check_tool cvs
+   check_tool gawk
+   check_tool bison
+   check_tool flex
+   check_tool gperf
+   check_tool makeinfo "Can be found in the Ubuntu repos in package texinfo"
+   check_tool libtool
+   check_tool g++
+   check_exist /usr/include/curses.h "Can be found in the Ubuntu repos in package libncurses5-dev"
+   check_exist /usr/include/expat.h "Can be found in the Ubuntu repos in package libexpat1-dev"
+}
