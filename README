@@ -24,7 +24,7 @@ Build system requirements:
 
    Place the SW-TM4C-xxx.exe file in buildfiles/cross/cross-ti-tm4c123g/tivaware
 
-   Tested on Ubuntu 12.04 x86_64 with the following additional
+   Tested on Ubuntu 16.04 x86_64 with the following additional
    packages installed:
 
    $ sudo apt-get install unzip groff bison flex gperf texinfo xsltproc \
