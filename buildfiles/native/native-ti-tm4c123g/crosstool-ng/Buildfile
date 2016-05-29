@@ -2,15 +2,16 @@
 # URL: http://www.crosstool-ng.org
 
 name=crosstool-ng
-version=1.18.0
+version=1.22.0
 release=1
 source=(http://crosstool-ng.org/download/$name/$name-$version.tar.bz2
         disable-LD_LIBRARY_PATH-check.patch
         $HOST.config)
+options=(nostrip)
 
 build()
 {
-   cd $name-$version
+   cd $name
 
    patch -p1 -i $SRC/disable-LD_LIBRARY_PATH-check.patch
 
@@ -23,11 +24,6 @@ build()
    sed -i /^CT_PREFIX_DIR=/s:=.*:=\"$PKG\": .config
 
    ./ct-ng build
-
-   # Fix .la files
-   sed -i -e "/libdir/s:=.*:='$CROSS_SYSROOT/lib':" \
-       $PKG/$HOST/sysroot/lib/libstdc++.la \
-       $PKG/$HOST/sysroot/lib/libsupc++.la
 }
 
 check()

@@ -5,6 +5,7 @@ name=cortex-m4-sdk
 version=1
 release=1
 depends=(native/crosstool-ng tivaware)
+options=(nostrip)
 
 build() {
    mkdir $PKG/$name
