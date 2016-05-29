@@ -2,7 +2,7 @@
 # URL: http://www.ti.com/tool/sw-tm4c
 
 name=tivaware
-version=1.0
+version=2.1.2.111
 release=1
 source=(SW-TM4C-$version.exe)
 options=(nostrip)
