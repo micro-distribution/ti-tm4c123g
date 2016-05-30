@@ -12,7 +12,18 @@ build() {
 
    # Enable hard float
    sed -i "s/-mfloat-abi=softfp/-mfloat-abi=hard/g" makedefs
-   make PREFIX=$HOST VERBOSE=1
+
+   # Compile example for ek-tm4c123gxl
+   dirs=(driverlib \
+         grlib     \
+         sensorlib \
+         usblib    \
+         examples/boards/ek-tm4c123gxl)
+
+   for dir in $dirs
+   do
+      make PREFIX=$HOST VERBOSE=1 -C $dir
+   done
 
    mkdir -p $OUTPUT/demos
 
