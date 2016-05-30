@@ -392,6 +392,7 @@ hr-xr-xr-x	root/root	bin/arm-cortex_m4-eabi-gcc link to bin/arm-cortex_m4-eabi-g
 -r-xr-xr-x	root/root	bin/arm-cortex_m4-eabi-gcc-ranlib
 -r-xr-xr-x	root/root	bin/arm-cortex_m4-eabi-gcov
 -r-xr-xr-x	root/root	bin/arm-cortex_m4-eabi-gcov-tool
+-r-xr-xr-x	root/root	bin/arm-cortex_m4-eabi-gdb
 -r-xr-xr-x	root/root	bin/arm-cortex_m4-eabi-gprof
 -r-xr-xr-x	root/root	bin/arm-cortex_m4-eabi-ld
 hr-xr-xr-x	root/root	bin/arm-cortex_m4-eabi-ld.bfd link to arm-cortex_m4-eabi/bin/ld.bfd
@@ -406,6 +407,8 @@ hr-xr-xr-x	root/root	bin/arm-cortex_m4-eabi-ranlib link to arm-cortex_m4-eabi/bi
 hr-xr-xr-x	root/root	bin/arm-cortex_m4-eabi-strip link to arm-cortex_m4-eabi/bin/strip
 -r--r--r--	root/root	build.log.bz2
 dr-xr-xr-x	root/root	include/
+dr-xr-xr-x	root/root	include/gdb/
+-r--r--r--	root/root	include/gdb/jit-reader.h
 dr-xr-xr-x	root/root	lib/
 dr-xr-xr-x	root/root	libexec/
 dr-xr-xr-x	root/root	libexec/gcc/
@@ -838,3 +841,23 @@ dr-xr-xr-x	root/root	lib/ldscripts/
 -r--r--r--	root/root	lib/ldscripts/armelf.xu
 -r--r--r--	root/root	lib/ldscripts/armelf.xw
 dr-xr-xr-x	root/root	share/
+dr-xr-xr-x	root/root	share/gdb/
+-r--r--r--	root/root	share/gdb/gdbinit
+dr-xr-xr-x	root/root	share/gdb/syscalls/
+-r--r--r--	root/root	share/gdb/syscalls/aarch64-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/amd64-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/arm-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/gdb-syscalls.dtd
+-r--r--r--	root/root	share/gdb/syscalls/i386-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/mips-n32-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/mips-n64-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/mips-o32-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/ppc64-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/ppc-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/s390-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/s390x-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/sparc64-linux.xml
+-r--r--r--	root/root	share/gdb/syscalls/sparc-linux.xml
+dr-xr-xr-x	root/root	share/gdb/system-gdbinit/
+-r--r--r--	root/root	share/gdb/system-gdbinit/elinos.py
+-r--r--r--	root/root	share/gdb/system-gdbinit/wrs-linux.py
